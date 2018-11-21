@@ -37,6 +37,14 @@ Build Erlang For Android
   7. sh bin/erl
 
 
+# Tools and Code Info
+
+- Ubuntu 16.04.2
+- android ndk r18b
+- openssl-1.1.0f
+- otp_src_21.1
+- 小米 mix 2
+
 # NDK toolchain gen(64)
 
 `$NDK/build/tools/make_standalone_toolchain.py --arch arm64 --api 24 --install-dir /tmp/toolchain64_24`
