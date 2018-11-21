@@ -22,10 +22,10 @@ Build Erlang For Android
 
 # 绕过该限制的方法：
 
-  1. 修改rom
-  2. 开发一个apk壳 
+  - 修改rom
+  - 开发一个apk壳 
 
-方法1，一般公司做不到，除非你是小米、华为或Google。
+修改rom的方法，过于复杂，破坏android安全限制，且通用型差。
 
 方法2，具体实现:
   1. 开发一个apk壳
@@ -39,14 +39,14 @@ Build Erlang For Android
 
 # NDK toolchain gen(64)
 
-$NDK/build/tools/make_standalone_toolchain.py --arch arm64 --api 24 --install-dir /tmp/toolchain64_24
+`$NDK/build/tools/make_standalone_toolchain.py --arch arm64 --api 24 --install-dir /tmp/toolchain64_24`
 
 
 # OpenSSL 编译(64)
 
 参考: https://github.com/leenjewel/openssl_for_ios_and_android.git
 
-bash ./build-openssl4android.sh android64-aarch64
+`bash ./build-openssl4android.sh android64-aarch64`
 
 
 # Erlang 编译(64)
@@ -71,12 +71,11 @@ https://source.android.google.cn/devices/architecture/vndk/linker-namespace
 http://jackwish.net/namespace-based-dynamic-linking.html
 
 https://www.jianshu.com/p/4be3d1dafbec
+
+查看平台信息(主要查看android api版本信息)
 adb shell getprop ro.build.version.release
 adb shell getprop ro.build.version.sdk 
 adb shell getprop
-/system/etc/public.libraries.txt
-/etc/ld.config.txt
-  sample: https://android.googlesource.com/platform/system/core/+/master/rootdir/etc/ld.config.txt
 
 
 # linux gen core dump
