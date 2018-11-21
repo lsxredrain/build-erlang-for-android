@@ -11,11 +11,12 @@ Build Erlang For Android
 
 
 但，上述方法对Erlang有一定限制:
-  crypto:start().
+`crypto:start().`
 执行失败。
 
 具体原因: android7.0之后对加载so做了白名单限制。
-crypto:start()方法会通过dlopen加载"$ROOTDIR/lib/crypto-4.3.3/priv/lib/crypto.so"，dlopen因为白名单限制，
+`crypto:start().`
+方法会通过dlopen加载"$ROOTDIR/lib/crypto-4.3.3/priv/lib/crypto.so"，dlopen因为白名单限制，
 执行失败。
 
 
@@ -44,6 +45,7 @@ $NDK/build/tools/make_standalone_toolchain.py --arch arm64 --api 24 --install-di
 # OpenSSL 编译(64)
 
 参考: https://github.com/leenjewel/openssl_for_ios_and_android.git
+
 bash ./build-openssl4android.sh android64-aarch64
 
 
@@ -55,7 +57,29 @@ https://bluishcoder.co.nz/2015/06/21/building-erlang-for-android.html
 
 把erl-xcomp-arm64-android.conf置于xcomp目录
 
-setup x-compile env
-./opt_build autoconf
-./opt_build configure --xcomp-conf=xcomp/erl-xcomp-arm64-android.conf
-./opt_build boot -a
+1. setup x-compile env
+2. ./opt_build autoconf
+3. ./opt_build configure --xcomp-conf=xcomp/erl-xcomp-arm64-android.conf
+4. ./opt_build boot -a
+
+
+# android 7.0后对加载so的限制
+
+https://developer.android.com/about/versions/nougat/android-7.0-changes?hl=zh-cn#ndk
+https://android.googlesource.com/platform/bionic/+/master/android-changes-for-ndk-developers.md
+https://source.android.google.cn/devices/architecture/vndk/linker-namespace
+http://jackwish.net/namespace-based-dynamic-linking.html
+
+https://www.jianshu.com/p/4be3d1dafbec
+adb shell getprop ro.build.version.release
+adb shell getprop ro.build.version.sdk 
+adb shell getprop
+/system/etc/public.libraries.txt
+/etc/ld.config.txt
+  sample: https://android.googlesource.com/platform/system/core/+/master/rootdir/etc/ld.config.txt
+
+
+# linux gen core dump
+
+  - gcc -g才能产生core
+  - ulimit -c unlimited
