@@ -25,7 +25,7 @@ Build Erlang For Android
   - 修改rom
   - 开发一个apk壳 
 
-修改rom的方法，过于复杂，破坏android安全限制，且通用型差。
+修改rom的方法通用型差。
 
 方法2，具体实现:
   1. 开发一个apk壳
