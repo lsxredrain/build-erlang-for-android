@@ -36,6 +36,10 @@ Build Erlang For Android
   6. cd erlang
   7. sh bin/erl
 
+制作apk壳的方法之所以能绕过限制，是因为：linker创建了属于app本身的namespace，保证app可以加载本沙盒内的so库，
+且不会对其他程序造成影响。这是Android独有的linker行为，给熟悉Linux开发的朋友挖了个大坑；Android发展太快，
+版本太多，bless那些有native开发需求的朋友。
+
 
 # Tools and Code Info
 
@@ -43,7 +47,7 @@ Build Erlang For Android
 - android ndk r18b
 - openssl-1.1.0f
 - otp_src_21.1
-- 小米 mix 2
+- 小米MIX2 (MIUI9.2, Android7.1.1)
 
 
 # NDK toolchain gen(64)
