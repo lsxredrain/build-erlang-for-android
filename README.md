@@ -96,3 +96,8 @@ https://www.jianshu.com/p/4be3d1dafbec
 
   - gcc -g才能产生core
   - ulimit -c unlimited
+
+
+# 验证Erlang crypto模块
+
+http://marianoguerra.org/posts/publicprivate-key-encryption-sign-and-verification-in-erlang.html  
